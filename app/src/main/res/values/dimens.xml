@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_app_logo_margin_horizontal_70dp">70dp</dimen>
+    <dimen name="constraint_0dp">0dp</dimen>
+</resources>
