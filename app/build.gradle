@@ -24,6 +24,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    applicationVariants.all {
+        buildConfigField "String", "API_BASE_URL", "\"https://gateway.marvel.com/\""
+        buildConfigField "String", "API_PRIVATE_KEY", "\"89a5d3f04466d189fe368118afc99db90559f67a\""
+        buildConfigField "String", "API_PUBLIC_KEY", "\"8fda6958d460101d9888b5af5c3e5bb1\""
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -68,6 +75,13 @@ dependencies {
     // Hilt Jetpack Integrations
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_android_x_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_android_x_version"
+
+    // Retrofit + GSON
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Okhttp Logging Interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
