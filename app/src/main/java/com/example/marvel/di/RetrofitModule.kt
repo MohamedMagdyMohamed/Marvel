@@ -1,8 +1,8 @@
 package com.example.marvel.di
 
 import com.example.marvel.BuildConfig
-import com.example.marvel.data.AuthInterceptor
-import com.example.marvel.data.api.MarvelApi
+import com.example.marvel.data.remote.AuthInterceptor
+import com.example.marvel.data.remote.service.CharactersApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,6 +43,6 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideMarvelApi(retrofit: Retrofit): MarvelApi =
-        retrofit.create(MarvelApi::class.java)
+    fun provideMarvelApi(retrofit: Retrofit): CharactersApiService =
+        retrofit.create(CharactersApiService::class.java)
 }

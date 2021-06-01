@@ -1,4 +1,4 @@
-package com.example.marvel.data
+package com.example.marvel.data.remote
 
 import com.example.marvel.BuildConfig
 import com.example.marvel.utils.extentions.toHexString
