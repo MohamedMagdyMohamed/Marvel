@@ -1,8 +1,8 @@
 package com.example.marvel.di
 
 import com.example.marvel.BuildConfig
-import com.example.marvel.data.remote.AuthInterceptor
-import com.example.marvel.data.remote.service.CharactersApiService
+import com.example.marvel.data.AuthInterceptor
+import com.example.marvel.data.characters.remote.service.CharactersApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

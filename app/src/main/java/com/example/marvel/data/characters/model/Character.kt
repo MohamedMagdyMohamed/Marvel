@@ -1,4 +1,4 @@
-package com.example.marvel.data.model
+package com.example.marvel.data.characters.model
 
 import java.util.*
 import kotlin.collections.ArrayList

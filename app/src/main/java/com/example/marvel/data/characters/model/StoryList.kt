@@ -1,4 +1,4 @@
-package com.example.marvel.data.model
+package com.example.marvel.data.characters.model
 
 data class StoryList(
     var available: Int,

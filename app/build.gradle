@@ -83,6 +83,9 @@ dependencies {
     // Okhttp Logging Interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
+    // Paging 3
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
     // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
