@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.marvel.R
@@ -42,6 +43,12 @@ class CharactersListsFragment : BaseCharactersListFragment() {
 
     override fun retry() {
         adapter.retry()
+    }
+
+    override fun getNavDirection(character: Character): NavDirections {
+        return CharactersListsFragmentDirections.actionHomeFragmentToCharacterDetailFragment(
+            character
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

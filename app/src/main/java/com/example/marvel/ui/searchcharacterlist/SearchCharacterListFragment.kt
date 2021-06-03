@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.marvel.R
@@ -106,5 +107,12 @@ class SearchCharacterListFragment :
 
     override fun isAdapterEmpty(): Boolean {
         return adapter.itemCount == 0
+    }
+
+    override fun getNavDirection(character: Character): NavDirections {
+        searchView.clearFocus()
+        return SearchCharacterListFragmentDirections.actionSearchCharacterListFragmentToCharacterDetailFragment(
+            character
+        )
     }
 }

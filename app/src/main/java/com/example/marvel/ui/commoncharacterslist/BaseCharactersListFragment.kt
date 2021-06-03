@@ -3,6 +3,7 @@ package com.example.marvel.ui.commoncharacterslist
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.navigation.NavDirections
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.ConcatAdapter
@@ -11,7 +12,6 @@ import com.example.marvel.R
 import com.example.marvel.data.characters.model.Character
 import com.example.marvel.databinding.FragmentCommonCharactersListBinding
 import com.example.marvel.ui.base.BaseFragment
-import com.example.marvel.ui.characterslist.CharactersListsFragmentDirections
 import com.example.marvel.utils.MarginItemDecoration
 import com.example.marvel.utils.UiUtils
 import com.example.marvel.utils.autoCleared
@@ -83,8 +83,7 @@ abstract class BaseCharactersListFragment :
     }
 
     override fun onCharacterItemClicked(character: Character) {
-        val navDirection =
-            CharactersListsFragmentDirections.actionHomeFragmentToCharacterDetailFragment(character)
+        val navDirection = getNavDirection(character)
         replaceFragment(navDirection)
     }
 
@@ -101,4 +100,6 @@ abstract class BaseCharactersListFragment :
     abstract fun getConcatAdapter(): ConcatAdapter
 
     abstract fun retry()
+
+    abstract fun getNavDirection(character: Character): NavDirections
 }

@@ -22,7 +22,11 @@
         android:id="@+id/searchCharacterListFragment"
         android:name="com.example.marvel.ui.searchcharacterlist.SearchCharacterListFragment"
         android:label="SearchCharacterListFragment"
-        tools:layout="@layout/fragment_common_characters_list" />
+        tools:layout="@layout/fragment_common_characters_list" >
+        <action
+            android:id="@+id/action_searchCharacterListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/characterDetailFragment"
