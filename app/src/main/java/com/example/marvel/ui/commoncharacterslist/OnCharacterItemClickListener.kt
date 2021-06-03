@@ -1,4 +1,4 @@
-package com.example.marvel.ui.characterslist
+package com.example.marvel.ui.commoncharacterslist
 
 import com.example.marvel.data.characters.model.Character
 

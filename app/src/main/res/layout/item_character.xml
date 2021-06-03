@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,18 +13,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_character"
             android:layout_width="match_parent"
             android:layout_height="@dimen/rv_item_height_150dp"
             android:contentDescription="@string/item_character_iv_character_content_description"
-            android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUrl="@{character.thumbnail.urlPath()}"
             app:shapeAppearanceOverlay="@style/largeRoundedImageView"
+            bind:imageUrl="@{character.thumbnail.urlPath()}"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
