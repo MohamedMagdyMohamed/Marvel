@@ -15,4 +15,7 @@
     <string name="item_character_state_header_footer_btn_retry">Retry</string>
     <!--  Menu Characters List  -->
     <string name="menu_characters_list_action_search_title">Search</string>
+
+    <!--  Fragment Character Detail  -->
+    <string name="fragment_character_detail_tv_description_label">Description</string>
 </resources>

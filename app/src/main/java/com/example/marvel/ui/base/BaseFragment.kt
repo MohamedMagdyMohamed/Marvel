@@ -3,7 +3,9 @@ package com.example.marvel.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import com.example.marvel.ui.activities.MainActivity
 
 abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
@@ -25,7 +27,15 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
         getMainActivity()?.replaceFragment(action)
     }
 
+    fun replaceFragment(direction: NavDirections) {
+        getMainActivity()?.replaceFragment(direction)
+    }
+
     fun goBack() {
         getMainActivity()?.onBackPressed()
+    }
+
+    fun setupToolbar(toolbar: Toolbar) {
+        getMainActivity()?.setupToolbar(toolbar)
     }
 }

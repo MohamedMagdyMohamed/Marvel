@@ -11,6 +11,7 @@ import com.example.marvel.R
 import com.example.marvel.data.characters.model.Character
 import com.example.marvel.databinding.FragmentCommonCharactersListBinding
 import com.example.marvel.ui.base.BaseFragment
+import com.example.marvel.ui.characterslist.CharactersListsFragmentDirections
 import com.example.marvel.utils.MarginItemDecoration
 import com.example.marvel.utils.UiUtils
 import com.example.marvel.utils.autoCleared
@@ -29,6 +30,7 @@ abstract class BaseCharactersListFragment :
     }
 
     private fun initUi() {
+        setupToolbar(binding.mtMain)
         setupAdapter()
         setupRecycleView()
         binding.btnRetry.setOnClickListener(this)
@@ -81,7 +83,9 @@ abstract class BaseCharactersListFragment :
     }
 
     override fun onCharacterItemClicked(character: Character) {
-        // open detail screen
+        val navDirection =
+            CharactersListsFragmentDirections.actionHomeFragmentToCharacterDetailFragment(character)
+        replaceFragment(navDirection)
     }
 
     override fun onClick(v: View?) {
