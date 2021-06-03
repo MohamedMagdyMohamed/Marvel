@@ -32,6 +32,10 @@ class SearchCharacterListViewModel @Inject constructor(
         _currentQuery.value = query
     }
 
+    fun getQuery(): String {
+        return _currentQuery.value ?: ""
+    }
+
     companion object {
         private const val CURRENT_QUERY = "current_query"
     }

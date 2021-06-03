@@ -71,6 +71,7 @@ class SearchCharacterListFragment :
         searchItem.setOnActionExpandListener(this)
 
         searchView = searchItem.actionView as SearchView
+        searchView.setQuery(viewModel.getQuery(), false)
         searchView.setOnQueryTextListener(this)
     }
 
