@@ -8,4 +8,8 @@
     <dimen name="item_character_name_min_height_30dp">30dp</dimen>
     <dimen name="card_elevation_small_2dp">2dp</dimen>
     <dimen name="image_size_75dp">75dp</dimen>
+    <dimen name="margin_start_16dp">16dp</dimen>
+    <dimen name="margin_top_16dp">16dp</dimen>
+    <dimen name="margin_top_5dp">5dp</dimen>
+    <dimen name="margin_horizontal_16dp">16dp</dimen>
 </resources>

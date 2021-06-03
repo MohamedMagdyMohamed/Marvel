@@ -16,4 +16,7 @@
     <string name="item_character_state_header_footer_btn_retry">أعد المحاولة</string>
     <!--  Menu Characters List  -->
     <string name="menu_characters_list_action_search_title">بحث</string>
+
+    <!--  Fragment Character Detail  -->
+    <string name="fragment_character_detail_tv_description_label">وصف</string>
 </resources>
