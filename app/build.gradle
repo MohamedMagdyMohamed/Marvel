@@ -75,9 +75,6 @@ dependencies {
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    // Hilt Jetpack Integrations
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_android_x_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_android_x_version"
 
     // Retrofit + GSON
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

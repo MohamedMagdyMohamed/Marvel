@@ -1,6 +1,5 @@
 package com.example.marvel.ui.searchcharacterlist
 
-import androidx.hilt.Assisted
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -15,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchCharacterListViewModel @Inject constructor(
     private val charactersRepository: CharactersRepository,
-    @Assisted state: SavedStateHandle
+    state: SavedStateHandle
 ) : ViewModel() {
 
     private val _currentQuery = state.getLiveData<String?>(CURRENT_QUERY, null)
