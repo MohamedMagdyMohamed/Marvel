@@ -1,4 +1,4 @@
-package com.example.marvel.ui.characterslist
+package com.example.marvel.ui.commoncharacterslist
 
 import android.view.ViewGroup
 import androidx.paging.LoadState

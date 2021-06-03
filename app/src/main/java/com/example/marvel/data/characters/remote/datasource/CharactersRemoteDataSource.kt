@@ -8,14 +8,16 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class CharactersRemoteDataSource(
-    private val charactersApiService: CharactersApiService
+    private val charactersApiService: CharactersApiService,
+    private val nameQuery: String? = null
 ) : PagingSource<Int, Character>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: CHARACTERS_STARTING_PAGE_INDEX
 
         return try {
-            val response = charactersApiService.getCharactersList(position, params.loadSize)
+            val response =
+                charactersApiService.getCharactersList(position, params.loadSize, nameQuery)
             val characters = response.data.results
 
             LoadResult.Page(

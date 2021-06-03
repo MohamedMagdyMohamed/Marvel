@@ -12,7 +12,7 @@ import javax.inject.Inject
 class CharactersRepositoryImpl @Inject constructor(private val charactersApiService: CharactersApiService) :
     CharactersRepository {
 
-    override fun getCharactersList(): Flow<PagingData<Character>> {
+    override fun getCharactersList(nameQuery: String?): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
                 pageSize = PAGE_SIZE,
@@ -20,7 +20,7 @@ class CharactersRepositoryImpl @Inject constructor(private val charactersApiServ
                 initialLoadSize = INITIAL_LOAD_SIZE,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { CharactersRemoteDataSource(charactersApiService) }
+            pagingSourceFactory = { CharactersRemoteDataSource(charactersApiService, nameQuery) }
         ).flow
     }
 
