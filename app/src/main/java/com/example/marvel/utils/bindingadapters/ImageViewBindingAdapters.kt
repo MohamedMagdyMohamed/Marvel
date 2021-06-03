@@ -5,6 +5,6 @@ import androidx.databinding.BindingAdapter
 import com.example.marvel.utils.extentions.loadImage
 
 @BindingAdapter("bind:imageUrl")
-fun ImageView.imageFromUrl(imageUrl: String?) {
+fun ImageView.loadImage(imageUrl: String?) {
     imageUrl?.let { loadImage(imageUrl) }
 }
