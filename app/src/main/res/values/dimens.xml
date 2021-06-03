@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_app_logo_margin_horizontal_70dp">70dp</dimen>
+    <dimen name="constraint_0dp">0dp</dimen>
+    <dimen name="recycle_view_margin_16dp">16dp</dimen>
+    <dimen name="rv_item_height_150dp">150dp</dimen>
+    <dimen name="large_corner_radius_16dp">16dp</dimen>
+    <dimen name="item_character_name_min_height_30dp">30dp</dimen>
+    <dimen name="card_elevation_small_2dp">2dp</dimen>
+    <dimen name="image_size_75dp">75dp</dimen>
+    <dimen name="margin_start_16dp">16dp</dimen>
+    <dimen name="margin_top_16dp">16dp</dimen>
+    <dimen name="margin_top_5dp">5dp</dimen>
+    <dimen name="margin_horizontal_16dp">16dp</dimen>
+</resources>

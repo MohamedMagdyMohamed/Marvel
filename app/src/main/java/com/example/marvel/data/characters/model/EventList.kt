@@ -1,0 +1,12 @@
+package com.example.marvel.data.characters.model
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class EventList(
+    var available: Int,
+    var returned: Int,
+    var collectionURI: String,
+    var items: ArrayList<EventSummary>
+) : Parcelable

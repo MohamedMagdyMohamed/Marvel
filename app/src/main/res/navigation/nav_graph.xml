@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.marvel.ui.characterslist.CharactersListsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_common_characters_list">
+        <action
+            android:id="@+id/action_homeFragment_to_searchCharacterListFragment"
+            app:destination="@id/searchCharacterListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchCharacterListFragment"
+        android:name="com.example.marvel.ui.searchcharacterlist.SearchCharacterListFragment"
+        android:label="SearchCharacterListFragment"
+        tools:layout="@layout/fragment_common_characters_list" />
+
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.example.marvel.ui.characterdetail.CharacterDetailFragment"
+        android:label="CharacterDetailFragment"
+        tools:layout="@layout/fragment_character_detail">
+        <argument
+            android:name="character"
+            app:argType="com.example.marvel.data.characters.model.Character" />
+    </fragment>
+</navigation>

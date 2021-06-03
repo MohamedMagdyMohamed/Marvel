@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.example.marvel.data.characters.model.Character" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_character"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rv_item_height_150dp"
+            android:contentDescription="@string/item_character_iv_character_content_description"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/largeRoundedImageView"
+            bind:imageUrl="@{character.thumbnail.urlPath()}"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tv_character"
+            android:layout_width="@dimen/constraint_0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_character_name"
+            android:gravity="center"
+            android:minHeight="@dimen/item_character_name_min_height_30dp"
+            android:text="@{character.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/iv_character"
+            app:layout_constraintEnd_toEndOf="@id/iv_character"
+            app:layout_constraintStart_toStartOf="@id/iv_character"
+            tools:text="DeadBool" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

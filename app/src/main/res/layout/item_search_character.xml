@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.example.marvel.data.characters.model.Character" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp"
+        app:cardBackgroundColor="?colorSurface"
+        app:cardCornerRadius="@dimen/large_corner_radius_16dp"
+        app:cardElevation="@dimen/card_elevation_small_2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_character"
+                android:layout_width="@dimen/image_size_75dp"
+                android:layout_height="@dimen/image_size_75dp"
+                android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp"
+                android:layout_marginStart="@dimen/constraint_0dp"
+                android:contentDescription="@string/item_character_iv_character_content_description"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:imageUrl="@{character.thumbnail.urlPath()}"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tv_character"
+                android:layout_width="@dimen/constraint_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/recycle_view_margin_16dp"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/item_character_name_min_height_30dp"
+                android:text="@{character.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="?colorOnSurface"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_character"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="DeadBool" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
