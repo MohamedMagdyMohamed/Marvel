@@ -29,13 +29,17 @@ class CharactersListsFragment : BaseFragment(R.layout.fragment_characters_list),
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentCharactersListBinding.bind(view)
-        adapter = CharactersListsAdapter(this)
         initUi()
     }
 
     private fun initUi() {
+        setupAdapter()
         setupRecycleView()
         binding.btnRetry.setOnClickListener(this)
+    }
+
+    private fun setupAdapter() {
+        adapter = CharactersListsAdapter(this)
         adapter.addLoadStateListener { loadState ->
             onLoadStateChanged(loadState)
         }
@@ -44,7 +48,10 @@ class CharactersListsFragment : BaseFragment(R.layout.fragment_characters_list),
     private fun setupRecycleView() {
         binding.apply {
             rvCharacters.setHasFixedSize(true)
-            rvCharacters.adapter = adapter
+            rvCharacters.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = CharactersListLoadStateAdapter { retry() },
+                footer = CharactersListLoadStateAdapter { retry() }
+            )
             rvCharacters.layoutManager = LinearLayoutManager(requireContext())
             rvCharacters.addItemDecoration(
                 MarginItemDecoration(
@@ -58,13 +65,11 @@ class CharactersListsFragment : BaseFragment(R.layout.fragment_characters_list),
     }
 
     private fun onLoadStateChanged(loadState: CombinedLoadStates) {
-        binding.apply {
-            rvCharacters.isVisible = loadState.source.refresh is LoadState.NotLoading
+        binding.rvCharacters.isVisible = loadState.source.refresh is LoadState.NotLoading
 
-            handleLoadingState(loadState)
-            handleErrorState(loadState)
-            handleEmptyState(loadState)
-        }
+        handleLoadingState(loadState)
+        handleErrorState(loadState)
+        handleEmptyState(loadState)
     }
 
     private fun handleLoadingState(loadState: CombinedLoadStates) {
@@ -109,7 +114,11 @@ class CharactersListsFragment : BaseFragment(R.layout.fragment_characters_list),
 
     override fun onClick(v: View?) {
         if (v == binding.btnRetry) {
-            adapter.retry()
+            retry()
         }
+    }
+
+    private fun retry() {
+        adapter.retry()
     }
 }

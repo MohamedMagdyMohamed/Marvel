@@ -19,6 +19,13 @@ class CharactersListsViewHolder(
         binding.root.setOnClickListener(this)
     }
 
+    fun bind(currentItem: Character) {
+        this.currentItem = currentItem
+
+        binding.setVariable(BR.character, currentItem)
+        binding.executePendingBindings()
+    }
+
     override fun onClick(v: View?) {
         if (v == binding.root) {
             if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
@@ -27,13 +34,6 @@ class CharactersListsViewHolder(
                 }
             }
         }
-    }
-
-    fun bind(currentItem: Character) {
-        this.currentItem = currentItem
-
-        binding.setVariable(BR.character, currentItem)
-        binding.executePendingBindings()
     }
 
     companion object {

@@ -11,4 +11,7 @@
     <string name="fragment_characters_list_tv_empty">لم يتم العثور على نتائج</string>
     <!--  Characters Adapter  -->
     <string name="item_character_iv_character_content_description">صورة شخصية</string>
+    <!--  Characters State Adapter  -->
+    <string name="item_character_state_header_footer_tv_error">لا يمكن تحميل النتائج</string>
+    <string name="item_character_state_header_footer_btn_retry">أعد المحاولة</string>
 </resources>
