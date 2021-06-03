@@ -1,124 +1,72 @@
 package com.example.marvel.ui.characterslist
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.paging.CombinedLoadStates
-import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.ConcatAdapter
 import com.example.marvel.R
 import com.example.marvel.data.characters.model.Character
-import com.example.marvel.databinding.FragmentCharactersListBinding
-import com.example.marvel.ui.base.BaseFragment
-import com.example.marvel.utils.MarginItemDecoration
-import com.example.marvel.utils.UiUtils
+import com.example.marvel.ui.commoncharacterslist.BaseCharactersListFragment
+import com.example.marvel.ui.commoncharacterslist.CharactersListLoadStateAdapter
 import com.example.marvel.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharactersListsFragment : BaseFragment(R.layout.fragment_characters_list),
-    OnCharacterItemClickListener, View.OnClickListener {
-
-    private var binding by autoCleared<FragmentCharactersListBinding>()
-    private var adapter by autoCleared<CharactersListsAdapter>()
+class CharactersListsFragment : BaseCharactersListFragment() {
 
     private val viewModel: CharactersListsViewModel by viewModels()
+    private var adapter by autoCleared<CharactersListsAdapter>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentCharactersListBinding.bind(view)
-        initUi()
+        setHasOptionsMenu(true)
     }
 
-    private fun initUi() {
-        setupAdapter()
-        setupRecycleView()
-        binding.btnRetry.setOnClickListener(this)
-    }
-
-    private fun setupAdapter() {
+    override fun setupAdapter() {
         adapter = CharactersListsAdapter(this)
         adapter.addLoadStateListener { loadState ->
             onLoadStateChanged(loadState)
         }
     }
 
-    private fun setupRecycleView() {
-        binding.apply {
-            rvCharacters.setHasFixedSize(true)
-            rvCharacters.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = CharactersListLoadStateAdapter { retry() },
-                footer = CharactersListLoadStateAdapter { retry() }
-            )
-            rvCharacters.layoutManager = LinearLayoutManager(requireContext())
-            rvCharacters.addItemDecoration(
-                MarginItemDecoration(
-                    UiUtils.getDimen(
-                        requireContext(),
-                        R.dimen.recycle_view_margin_16dp
-                    ).toInt()
-                )
-            )
-        }
+    override fun getConcatAdapter(): ConcatAdapter {
+        return adapter.withLoadStateHeaderAndFooter(
+            header = CharactersListLoadStateAdapter { retry() },
+            footer = CharactersListLoadStateAdapter { retry() }
+        )
     }
 
-    private fun onLoadStateChanged(loadState: CombinedLoadStates) {
-        binding.rvCharacters.isVisible = loadState.source.refresh is LoadState.NotLoading
-
-        handleLoadingState(loadState)
-        handleErrorState(loadState)
-        handleEmptyState(loadState)
+    override fun retry() {
+        adapter.retry()
     }
 
-    private fun handleLoadingState(loadState: CombinedLoadStates) {
-        binding.pbLoading.isVisible = loadState.source.refresh is LoadState.Loading
-    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
 
-    private fun handleErrorState(loadState: CombinedLoadStates) {
-        val errorState = loadState.source.append as? LoadState.Error
-            ?: loadState.source.prepend as? LoadState.Error
-            ?: loadState.append as? LoadState.Error
-            ?: loadState.prepend as? LoadState.Error
-            ?: loadState.refresh as? LoadState.Error
+        inflater.inflate(R.menu.menu_characters_list, menu)
 
-        binding.apply {
-            tvError.text = errorState?.error?.localizedMessage
-            btnRetry.isVisible = loadState.source.refresh is LoadState.Error
-            tvError.isVisible = loadState.source.refresh is LoadState.Error
-        }
-    }
-
-    private fun handleEmptyState(loadState: CombinedLoadStates) {
-        binding.apply {
-            if (loadState.source.refresh is LoadState.NotLoading &&
-                loadState.append.endOfPaginationReached &&
-                adapter.itemCount < 1
-            ) {
-                rvCharacters.isVisible = false
-                tvEmpty.isVisible = true
-            } else {
-                tvEmpty.isVisible = false
-            }
+        val searchItem = menu.findItem(R.id.action_search)
+        searchItem.setOnMenuItemClickListener {
+            replaceFragment(R.id.action_homeFragment_to_searchCharacterListFragment)
+            return@setOnMenuItemClickListener true
         }
     }
 
     override fun observeData() {
         viewModel.charactersListLiveData.observe(viewLifecycleOwner) {
-            adapter.submitData(viewLifecycleOwner.lifecycle, it)
+            submitList(it)
         }
     }
 
-    override fun onCharacterItemClicked(character: Character) {}
-
-    override fun onClick(v: View?) {
-        if (v == binding.btnRetry) {
-            retry()
-        }
+    private fun submitList(list: PagingData<Character>) {
+        adapter.submitData(viewLifecycleOwner.lifecycle, list)
     }
 
-    private fun retry() {
-        adapter.retry()
+    override fun isAdapterEmpty(): Boolean {
+        return adapter.itemCount == 0
     }
 }

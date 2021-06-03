@@ -13,4 +13,6 @@
     <!--  Characters State Adapter  -->
     <string name="item_character_state_header_footer_tv_error">Results could not be loaded</string>
     <string name="item_character_state_header_footer_btn_retry">Retry</string>
+    <!--  Menu Characters List  -->
+    <string name="menu_characters_list_action_search_title">Search</string>
 </resources>

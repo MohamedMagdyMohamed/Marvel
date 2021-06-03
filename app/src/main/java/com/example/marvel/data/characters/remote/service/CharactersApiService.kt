@@ -9,6 +9,7 @@ interface CharactersApiService {
     @GET("v1/public/characters")
     suspend fun getCharactersList(
         @Query("offset") offset: Int,
-        @Query("limit") limit: Int
+        @Query("limit") limit: Int,
+        @Query("nameStartsWith") nameStartsWith: String?
     ): CharacterDataWrapper
 }

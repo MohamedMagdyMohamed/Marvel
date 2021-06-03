@@ -33,4 +33,12 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+    fun replaceFragment(actionId: Int) {
+        navController.currentDestination?.id.let { currentDestinationId ->
+            if (currentDestinationId != actionId) {
+                navController.navigate(actionId, null, null, null)
+            }
+        }
+    }
 }
