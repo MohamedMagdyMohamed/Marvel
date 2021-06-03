@@ -21,7 +21,7 @@ class MarginItemDecoration(private var margin: Int = 0) : RecyclerView.ItemDecor
     ) {
         val position: Int = parent.getChildLayoutPosition(view)
         if (position == RecyclerView.NO_POSITION) {
-            return;
+            return
         }
 
         // we only add top margin to the first row

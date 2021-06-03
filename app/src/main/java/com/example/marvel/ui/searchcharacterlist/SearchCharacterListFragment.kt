@@ -17,8 +17,8 @@ import com.example.marvel.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchCharacterListFragment : BaseCharactersListFragment(), MenuItem.OnActionExpandListener,
-    SearchView.OnQueryTextListener {
+class SearchCharacterListFragment :
+    BaseCharactersListFragment(), MenuItem.OnActionExpandListener, SearchView.OnQueryTextListener {
 
     private val viewModel: SearchCharacterListViewModel by viewModels()
     private var searchView by autoCleared<SearchView>()

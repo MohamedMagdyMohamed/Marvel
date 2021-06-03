@@ -15,8 +15,9 @@ import com.example.marvel.utils.MarginItemDecoration
 import com.example.marvel.utils.UiUtils
 import com.example.marvel.utils.autoCleared
 
-abstract class BaseCharactersListFragment : BaseFragment(R.layout.fragment_common_characters_list),
-    OnCharacterItemClickListener, View.OnClickListener {
+abstract class BaseCharactersListFragment :
+    BaseFragment(R.layout.fragment_common_characters_list), OnCharacterItemClickListener,
+    View.OnClickListener {
 
     protected var binding by autoCleared<FragmentCommonCharactersListBinding>()
 
@@ -79,7 +80,9 @@ abstract class BaseCharactersListFragment : BaseFragment(R.layout.fragment_commo
             isAdapterEmpty()
     }
 
-    override fun onCharacterItemClicked(character: Character) {}
+    override fun onCharacterItemClicked(character: Character) {
+        // open detail screen
+    }
 
     override fun onClick(v: View?) {
         if (v == binding.btnRetry) {
