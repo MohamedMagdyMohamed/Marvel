@@ -4,4 +4,11 @@
 
     <!--  Splash Activity  -->
     <string name="activity_splash_iv_app_logo_content_description">شعار التطبيق</string>
+
+    <!--  CharactersListFragment  -->
+    <string name="fragment_characters_list_tv_error">لا يمكن تحميل النتائج</string>
+    <string name="fragment_characters_list_btn_retry">أعد المحاولة</string>
+    <string name="fragment_characters_list_tv_empty">لم يتم العثور على نتائج</string>
+    <!--  Characters Adapter  -->
+    <string name="item_character_iv_character_content_description">صورة شخصية</string>
 </resources>

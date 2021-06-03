@@ -43,6 +43,10 @@ object RetrofitModule {
 
     @Provides
     @Singleton
+    fun provideAuthInterceptor(): AuthInterceptor = AuthInterceptor()
+
+    @Provides
+    @Singleton
     fun provideMarvelApi(retrofit: Retrofit): CharactersApiService =
         retrofit.create(CharactersApiService::class.java)
 }

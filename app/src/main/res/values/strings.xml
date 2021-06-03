@@ -3,4 +3,11 @@
 
     <!--  Splash Activity  -->
     <string name="activity_splash_iv_app_logo_content_description">App Logo</string>
+
+    <!--  CharactersListFragment  -->
+    <string name="fragment_characters_list_tv_error">Results could not be loaded</string>
+    <string name="fragment_characters_list_btn_retry">Retry</string>
+    <string name="fragment_characters_list_tv_empty">No results found</string>
+    <!--  Characters Adapter  -->
+    <string name="item_character_iv_character_content_description">Character image</string>
 </resources>

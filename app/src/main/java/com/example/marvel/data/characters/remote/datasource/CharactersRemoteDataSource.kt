@@ -21,7 +21,7 @@ class CharactersRemoteDataSource(
             LoadResult.Page(
                 data = characters,
                 prevKey = if (position == CHARACTERS_STARTING_PAGE_INDEX) null else position - 1,
-                nextKey = if (characters.isEmpty()) null else position + 1
+                nextKey = if (characters.isEmpty()) null else position + params.loadSize
             )
         } catch (exception: IOException) {
             LoadResult.Error(exception)
@@ -31,13 +31,10 @@ class CharactersRemoteDataSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
-        }
+        return state.anchorPosition
     }
 
     companion object {
-        private const val CHARACTERS_STARTING_PAGE_INDEX = 1
+        private const val CHARACTERS_STARTING_PAGE_INDEX = 0
     }
 }

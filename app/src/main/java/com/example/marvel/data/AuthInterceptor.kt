@@ -5,9 +5,7 @@ import com.example.marvel.utils.extentions.toHexString
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.security.MessageDigest
-import javax.inject.Singleton
 
-@Singleton
 class AuthInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
